@@ -1,0 +1,21 @@
+@layer utilities {
+    .content-auto {
+        content-visibility: auto;
+    }
+    .save-slot-3d {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+    .slot-face {
+        transition: all 0.3s ease;
+        transform: rotateX(0deg);
+        backface-visibility: hidden;
+    }
+    .save-slot:hover .slot-face {
+        transform: rotateX(-5deg) translateY(-8px);
+    }
+    .slot-shadow {
+        filter: blur(8px);
+        opacity: 0.7;
+    }
+}

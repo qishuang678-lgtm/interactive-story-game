@@ -1,0 +1,21 @@
+@layer utilities {
+    .text-shadow {
+        text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+    }
+    .text-shadow-lg {
+        text-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+    }
+    .glow {
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.3);
+    }
+    .glow-hover {
+        transition: all 0.3s ease;
+    }
+    .glow-hover:hover {
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.6);
+        transform: translateY(-3px);
+    }
+    .bg-gradient-game {
+        background: linear-gradient(135deg, #020617 0%, #1E293B 100%);
+    }
+}

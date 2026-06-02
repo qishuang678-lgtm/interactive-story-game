@@ -1,0 +1,206 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: #f0f4f0;
+    /* 添加背景图 */
+    background-image: url('../images/门.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* 原图显示样式 */
+.original-image-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#show-original-btn {
+    background-color: #2ecc71;
+    margin-bottom: 10px;
+}
+
+#show-original-btn:hover {
+    background-color: #27ae60;
+}
+
+.original-popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.original-image {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 拼图容器 */
+#puzzle-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3px;
+    padding: 3px;
+    margin-bottom: 20px;
+}
+
+/* 拼图块样式 */
+.puzzle-piece {
+    background-size: 400% 400%;
+    background-position: 0 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    user-select: none;
+}
+
+.puzzle-piece:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: scale(1.02);
+}
+
+.puzzle-piece.empty {
+    background-color: #bdc3c7;
+    border: 2px dashed #95a5a6;
+    cursor: default;
+    box-shadow: none;
+    transform: none;
+}
+
+/* 控制按钮 */
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button#reset-btn {
+    background-color: #e74c3c;
+}
+
+button#reset-btn:hover {
+    background-color: #c0392b;
+}
+
+button#skip-btn {
+    background-color: #f39c12;
+}
+
+button#skip-btn:hover {
+    background-color: #d35400;
+}
+
+/* 对话框样式 */
+.dialogue-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-top: auto;
+}
+
+.character-images {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.character-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    display: none;
+}
+
+.character-image.visible {
+    display: block;
+}
+
+.dialogue-box {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.character-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.dialogue-text {
+    line-height: 1.5;
+    color: #34495e;
+}

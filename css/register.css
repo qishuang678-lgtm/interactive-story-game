@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+
+body {
+  min-height: 100vh;  
+  position: relative;  
+  overflow: hidden;    }
+
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  
+}
+
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+}
+
+
+.register-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 420px;  
+  background-color: rgba(255, 255, 255, 0.7); 
+  backdrop-filter: blur(10px);  
+  -webkit-backdrop-filter: blur(10px);  
+  padding: 35px;
+  border-radius: 12px;  
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2); }
+
+
+.register-container h2 {
+  text-align: center;
+  color: #2c3e50;  
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+
+.form-group {
+  margin-bottom: 22px;  
+}
+
+.form-group label {
+  display: block;  
+  color: #555;  
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+
+.form-group input {
+  width: 100%;
+  padding: 13px 15px;  
+  border: 1px solid #ddd;  
+  border-radius: 6px;  
+  font-size: 16px;
+  transition: all 0.3s;  
+}
+
+
+.form-group input:focus {
+  outline: none;  
+  border-color: #3498db;  
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);  
+}
+
+
+.password-wrapper {
+  position: relative; 
+}
+
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);  
+  background: transparent;  
+  border: none;  
+  cursor: pointer; 
+  font-size: 18px;
+  color: #888;  
+  padding: 2px;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+
+.register-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;  
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;  
+  margin-top: 8px;
+}
+
+
+.register-btn:hover {
+  background-color: #2980b9;  
+}
+
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-link a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 500px) {
+  .register-container {
+    width: 90%; 
+    padding: 25px;
+  }
+  
+  .register-container h2 {
+    font-size: 24px;
+  }
+}

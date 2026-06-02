@@ -1,0 +1,40 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+#gameCanvas {
+    border: 2px solid #333;
+    background-color: #87CEEB;
+    background-image: 
+        linear-gradient(#87CEEB 2px, transparent 2px),
+        linear-gradient(90deg, #87CEEB 2px, transparent 2px);
+    background-size: 48px 48px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.game-info {
+    margin-top: 15px;
+    color: #333;
+    font-size: 14px;
+}
+
+/* 隐藏默认滚动条但保留功能 */
+body {
+    overflow: auto;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+}

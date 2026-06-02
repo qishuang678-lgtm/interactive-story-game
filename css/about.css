@@ -1,0 +1,97 @@
+
+:root {
+    --color-dark: #121212;
+    --color-darker: #0a0a0a;
+    --color-primary: #0ea5e9;
+    --color-secondary: #8b5cf6;
+    --color-neon: #06b6d4;
+}
+
+
+.font-game {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.text-shadow-lg {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.glow {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.7);
+}
+
+
+body {
+    background-color: var(--color-darker);
+    transition: opacity 0.8s ease-out;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+
+.bg-dark {
+    background-color: var(--color-dark);
+}
+
+.bg-darker {
+    background-color: var(--color-darker);
+}
+
+.text-neon {
+    color: var(--color-neon);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+
+.creator-card {
+    background-color: rgba(18, 18, 18, 0.6);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.creator-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.15);
+}
+
+.image-container {
+    border: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .creators-grid {
+        gap: 60px;
+    }
+    
+    .team-intro {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        margin-bottom: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    .creator-card {
+        padding: 1rem;
+    }
+}

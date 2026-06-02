@@ -1,0 +1,98 @@
+/* 页面基础设置：全屏、黑色背景、隐藏溢出内容 */
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  /* 让鼠标样式提示可点击 */
+  cursor: pointer; 
+  /* 平滑过渡，增强动画连贯性 */
+  transition: all 0.3s ease; 
+}
+
+/* 文字容器：居中显示，限制宽度避免文字过宽 */
+.text-container {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  margin: 60px auto 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.8;
+  opacity: 0;
+  /* 初始隐藏，通过JS控制渐显 */
+  transform: translateY(20px); 
+  animation: fadeInContainer 1s forwards;
+}
+
+/* 容器渐显动画 */
+@keyframes fadeInContainer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 单行文本文字：初始透明，逐行控制显示 */
+.line {
+  opacity: 0;
+  transform: translateY(10px);
+  margin: 15px 0;
+  /* 让文字从下往上渐显的延迟阶梯 */
+  animation-delay: calc(var(--index) * 0.5s); 
+}
+
+/* 文字逐行渐显动画 */
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 加载遮罩：模拟电影开场前的黑场过渡（可选） */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* 遮罩消失动画 */
+.loading-mask.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #000; /* 作为图片加载失败的备用背景 */
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* 修正后的背景图设置 */
+  background-image: url("../images/0-0背景.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* 其他样式保持不变... */
+.text-container {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  margin: 60px auto 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInContainer 1s forwards;
+}
