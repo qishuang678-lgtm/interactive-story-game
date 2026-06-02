@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\2-1.css">
+    <title>游戏界面</title>
+    <style>
+    /* 背景图容器 - 置于最底层 */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; 
+      background-image: url("../images/KO来袭.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+   
+    .background::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  /* 选项框样式 */
+    .options-container {
+        display: none;
+        position: absolute;
+        bottom: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        max-width: 600px;
+        z-index: 100;
+    }
+
+    .option {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 15px 20px;
+        margin: 10px 0;
+        border: 2px solid #ffcc00;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .option:hover {
+        background-color: rgba(255, 204, 0, 0.3);
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+    <!-- 背景图 -->
+    <div class="background"></div>
+    
+    <!-- 角色立绘容器 -->
+    <div class="character-container left">
+        <img class="character-image" id="left-character-image" src="" >
+    </div>
+    <div class="character-container right">
+        <img class="character-image" id="right-character-image" src="" >
+    </div>
+
+    <!-- 设置按钮 -->
+    <button class="settings-btn" id="settings-btn">
+        <span class="settings-icon">⚙️</span>
+    </button>
+    
+    <!-- 设置菜单 -->
+    <div class="settings-menu" id="settings-menu">
+        <ul>
+            <li><a href="0-0.html">新的游戏</a></li>
+            <li><a href="save.html?action=save">保存存档</a></li>
+            <li><a href="save.html?action=load">获取存档</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="login.html">退出登录</a></li>
+        </ul>
+    </div>
+
+    <!-- 对话区域 -->
+    <div class="dialogue-container">
+        <div class="name-bar" id="name-bar">
+            <span id="character-name">角色名</span>
+        </div>
+        <div class="dialogue-box" id="dialogue-box">
+            <p id="dialogue-text"></p>
+        </div>
+        <div class="continue-indicator">点击继续 ▼</div>
+    </div>
+    <!-- 在对话区域下方添加选项框 -->
+<div class="options-container" id="options-container">
+    <div class="option" data-target="../2Dgame/html/gametest.html">一步一步来</div>
+    <div class="option" data-target="../2Dgame/html/决战1.html">赌上一切</div>
+</div>
+
+    <script src="..\js\2-5.js"></script>
+</body>
+</html>

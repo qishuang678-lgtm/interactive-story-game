@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 无畏重启：逆光之战</title>
+    <style>
+        :root {
+            --color-dark: #121212;
+            --color-darker: #0a0a0a;
+            --color-primary: #0ea5e9;
+            --color-secondary: #8b5cf6;
+            --color-neon: #06b6d4;
+        }
+
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-darker);
+            color: white;
+            min-height: 100vh;
+            transition: opacity 0.8s ease-out;
+            font-family: Arial, sans-serif;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 字体和文本样式 */
+        .font-game {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-shadow-lg {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .text-neon {
+            color: var(--color-neon);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        /* 背景和布局 */
+        .bg-dark {
+            background-color: var(--color-dark);
+        }
+
+        .bg-darker {
+            background-color: var(--color-darker);
+        }
+
+        .bg-primary {
+            background-color: var(--color-primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--color-secondary);
+        }
+
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .relative-z10 {
+            position: relative;
+            z-index: 10;
+            padding: 3rem 0;
+        }
+
+        /* 卡片样式 */
+        .creator-card {
+            background-color: rgba(18, 18, 18, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .creator-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.15);
+        }
+
+        .image-container {
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .creator-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .creator-card:hover .creator-img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, var(--color-dark), transparent);
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .creator-card:hover .overlay {
+            opacity: 1;
+        }
+
+        /* 网格布局 */
+        .creators-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .creators-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .creators-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* 头部样式 */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .back-link {
+            color: var(--color-neon);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background-color: var(--color-neon);
+            margin: 1.5rem auto;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.7);
+        }
+
+        /* 团队介绍 */
+        .team-intro {
+            margin-top: 5rem;
+            background-color: rgba(18, 18, 18, 0.5);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-darker font-game">
+    <!-- 背景效果 -->
+    <div class="fixed-bg">
+        <div class="bg-blob bg-primary" style="top: 25%; left: 25%; width: 200px; height: 200px;"></div>
+        <div class="bg-blob bg-secondary" style="bottom: 30%; right: 30%; width: 250px; height: 250px;"></div>
+    </div>
+
+    <div class="relative-z10 container">
+        <header>
+            <a href="menu.html" class="back-link">
+                <span>← 返回菜单</span>
+            </a>
+            <h1 class="text-white text-shadow-lg">关于我们</h1>
+            <p class="max-w-2xl mx-auto">
+                "无畏重启：逆光之战"的核心创作团队————一群热爱游戏的梦想家
+            </p>
+            <div class="divider"></div>
+        </header>
+
+        <div class="creators-grid">
+            <div class="creator-card" data-url="吕骐豪.html">
+                <div class="image-container">
+                    <img src="..\images\吕骐豪.jpg" class="creator-img" alt="吕骐豪照片">
+                    <div class="overlay">
+                        <span class="text-neon">查看详情 →</span>
+                    </div>
+                </div>
+                <h3>吕骐豪</h3>
+                <p class="text-neon mb-2">组长，主编程，协助写手</p>
+                <p class="text-sm">负责游戏整体创意与技术方向，协调团队开发进度</p>
+            </div>
+
+            <div class="creator-card" data-url="蔡洁.html">
+                <div class="image-container">
+                    <img src="..\images\蔡洁.jpg" class="creator-img" alt="蔡洁照片">
+                    <div class="overlay">
+                        <span class="text-neon">查看详情 →</span>
+                    </div>
+                </div>
+                <h3>蔡洁</h3>
+                <p class="text-neon mb-2">写手，美工</p>
+                <p class="text-sm">负责文案设计、剧情走向</p>
+            </div>
+
+            <div class="creator-card" data-url="齐爽.html">
+                <div class="image-container">
+                    <img src="..\images\齐爽.jpg" class="creator-img" alt="齐爽照片">
+                    <div class="overlay">
+                        <span class="text-neon">查看详情 →</span>
+                    </div>
+                </div>
+                <h3>齐爽</h3>
+                <p class="text-neon mb-2">美工、摄影、视觉设计</p>
+                <p class="text-sm">负责视觉与美术难题攻克</p>
+            </div>
+
+            <div class="creator-card" data-url="..\html\夏仁缘.html">
+                <div class="image-container">
+                    <img src="..\images\夏仁缘.jpg" class="creator-img" alt="夏仁缘照片">
+                    <div class="overlay">
+                        <span class="text-neon">查看详情 →</span>
+                    </div>
+                </div>
+                <h3>夏仁缘</h3>
+                <p class="text-neon mb-2">副程序员、日志记录者</p>
+                <p class="text-sm">协助游戏开发与日志记录</p>
+            </div>
+        </div>
+
+        <div class="team-intro">
+            <h2>谢谢你玩我们的游戏！</h2>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 页面加载淡入效果
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // 创作者卡片交互
+            const creatorCards = document.querySelectorAll('.creator-card');
+            creatorCards.forEach(card => {
+                // 点击跳转
+                card.addEventListener('click', () => {
+                    const targetUrl = card.getAttribute('data-url');
+                    if (targetUrl && targetUrl!== '#') {
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = targetUrl;
+                        }, 800);
+                    }
+                });
+
+                // 鼠标悬停效果
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px)';
+                    card.style.boxShadow = '0 15px 30px -5px rgba(6, 182, 212, 0.2)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                });
+            });
+
+            // 返回按钮交互
+            const backButton = document.querySelector('.back-link');
+            if (backButton) {
+                backButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetUrl = e.currentTarget.getAttribute('href');
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 800);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

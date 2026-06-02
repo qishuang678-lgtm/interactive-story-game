@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K/O的阻拦</title>
+    <link rel="stylesheet" href="../css/华容道.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>破除K/O设下的阻碍</h1>
+        
+        <!-- 原图显示按钮 -->
+        <div class="original-image-container">
+            <button id="show-original-btn">查看原图</button>
+            <div id="original-image-popup" class="original-popup">
+                <span class="close-btn">&times;</span>
+                <img src="..\images\华容道.png" class="original-image" alt="原图">
+            </div>
+        </div>
+        
+        <!-- 拼图容器 -->
+        <div id="puzzle-container"></div>
+        
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button id="reset-btn">重新开始</button>
+            <button id="skip-btn">跳过</button>
+        </div>
+    </div>
+
+    <!-- 对话框区域 -->
+    <div class="dialogue-container">
+        <div class="character-images">
+            <img id="left-character-image" class="character-image" src="" alt="">
+            <img id="right-character-image" class="character-image" src="" alt="">
+        </div>
+        <div class="dialogue-box">
+            <div id="character-name" class="character-name"></div>
+            <div id="dialogue-text" class="dialogue-text"></div>
+        </div>
+    </div>
+
+    <script src="../js/华容道.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏存档</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="..\js\config.js"></script>
+    <link rel="stylesheet" href="..\css\save.css">
+</head>
+<body class="bg-darker text-gray-200 min-h-screen flex flex-col">
+    <!-- 顶部导航 -->
+    <header class="bg-dark/80 backdrop-blur-sm border-b border-gray-700 py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa fa-gamepad text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold">存档</h1>
+            </div>
+            <button id="back-btn" class="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg transition-all">
+                <i class="fa fa-arrow-left"></i>
+                <span>返回</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow container mx-auto p-6">
+        <h2 id="page-title" class="text-2xl font-bold mb-8 text-center">选择存档位置</h2>
+        
+        <!-- 存档槽容器 - 3×2网格布局 -->
+        <div class="save-slots grid grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+            <!-- 存档位置 1 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="1">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-1-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 1</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-1-time"></span>
+                    </div>
+                    <!-- 选中状态边框 -->
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <!-- 3D阴影效果 -->
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <!-- 悬停提示 -->
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-1"></div>
+            </div>
+
+            <!-- 存档位置 2 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="2">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-2-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 2</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-2-time"></span>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-2"></div>
+            </div>
+
+            <!-- 存档位置 3 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="3">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-3-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 3</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-3-time"></span>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-3"></div>
+            </div>
+
+            <!-- 存档位置 4 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="4">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-4-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 4</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-4-time"></span>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-4"></div>
+            </div>
+
+            <!-- 存档位置 5 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="5">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-5-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 5</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-5-time"></span>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-5"></div>
+            </div>
+
+            <!-- 存档位置 6 -->
+            <div class="save-slot save-slot-3d group cursor-pointer" data-slot="6">
+                <div class="slot-face bg-dark-card rounded-xl overflow-hidden border-2 border-gray-700 h-48 relative">
+                    <div class="slot-image w-full h-32 bg-black bg-center bg-cover" id="slot-6-image"></div>
+                    <div class="slot-info p-3 flex justify-between items-center">
+                        <span class="slot-number font-medium">存档 6</span>
+                        <span class="slot-time text-sm text-gray-400" id="slot-6-time"></span>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/70 rounded-xl transition-all"></div>
+                    <div class="selected-indicator absolute inset-0 border-2 border-secondary hidden rounded-xl"></div>
+                </div>
+                <div class="slot-shadow bg-primary/20 w-full h-4 rounded-full -mt-2 transform translate-y-2 transition-all group-hover:scale-105"></div>
+                <div class="slot-tooltip mt-2 text-center text-sm text-gray-400 hidden" id="tooltip-6"></div>
+            </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="flex justify-center gap-4 mt-8">
+            <button id="confirm-btn" class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                <i class="fa fa-check"></i>
+                <span>确认存档</span>
+            </button>
+            <button id="cancel-btn" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2">
+                <i class="fa fa-times"></i>
+                <span>取消</span>
+            </button>
+        </div>
+    </main>
+
+
+    <script src="..\js\save.js"></script>
+</body>
+</html>

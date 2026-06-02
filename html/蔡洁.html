@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人介绍页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .title {
+            color: #3498db;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.5rem;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-list li strong {
+            width: 100px;
+            color: #2c3e50;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #e3f2fd;
+            color: #2196f3;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-links a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .contact-links a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="..\images\蔡洁.jpg" alt="个人照片" class="profile-photo">
+            <h1>蔡洁</h1>
+            <p class="title">北京理工大学 | 大二</p >
+            <p>热爱生活，专注学习技能，追求挑战，乐于创造</p >
+        </header>
+
+        <section>
+            <h2>关于我</h2>
+            <p>我的专业是工商管理人工智能专业。生活里是个摄影迷，尤其喜欢拍城市里的商铺和人流。同时也喜欢分享日常，喜欢旅游运动，爱做志愿者活动，是一个善良热心，慢热又真诚的人。</p >
+            <p></p >
+        </section>
+
+        <section>
+            <h2>基本信息</h2>
+            <ul class="info-list">
+                <li><strong>年龄：</strong>19岁</li>
+                <li><strong>学历：</strong>本科</li>
+                <li><strong>邮箱：</strong>2395919086@qq.com</li>
+                <li><strong>电话：</strong>131****8590</li>
+                <li><strong>所在地：</strong>北京市</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>专业技能</h2>
+            <div class="skills">
+                <span class="skill-tag">商业流程数学化认知</span>
+                <span class="skill-tag">管理学基础工具</span>
+                <span class="skill-tag">数据库基础</span>
+                <span class="skill-tag">PPT与方案</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>联系方式</h2>
+            <p>欢迎通过以下方式联系我：</p >
+            <div class="contact-links">
+                <a href=" ">📧 邮箱</a >
+                <a href="tel:13113738590">📞 电话</a >
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 个人介绍页面 | 由蔡洁设计开发</p >
+    </footer>
+</body>
+</html>

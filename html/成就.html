@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成就系统</title>
+    <link rel="stylesheet" href="..\css\成就.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="logo">
+                <div class="trophy-icon"></div>
+                <h1>成就系统</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn">← 返回游戏</button>
+            </nav>
+        </header>
+
+        <!-- 成就统计 -->
+        <div class="achievements-stats">
+            <div class="stats-item">
+                <div class="stats-value" id="totalAchievements">8</div>
+                <div class="stats-label">总成就数</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-value" id="unlockedAchievements">3</div>
+                <div class="stats-label">已解锁</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-value" id="lockedAchievements">5</div>
+                <div class="stats-label">未解锁</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-value" id="completionRate">38%</div>
+                <div class="stats-label">完成率</div>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <div class="achievements-grid" id="achievementsGrid">
+                <!-- 成就格子会通过JS动态生成 -->
+            </div>
+        </main>
+
+        <!-- 成就放大查看模态框 -->
+        <div class="achievement-modal" id="achievementModal">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-content">
+                <img src="" alt="成就大图" class="modal-image" id="modalImage">
+                <div class="modal-description" id="modalDescription">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="..\js\成就.js"></script>
+</body>
+</html>

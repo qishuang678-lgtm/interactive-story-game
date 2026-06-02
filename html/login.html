@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录界面</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="..\js\login.js"></script>
+</head>
+<body>
+  <div class="video-bg">
+    <video src="..\videos\瑞娜bgm完整.mp4" loop muted autoplay playsinline></video>
+  </div>
+
+  <div class="login-container">
+    <h2>登录</h2>
+    <form class="login-form">
+      <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" id="username" required placeholder="请输入用户名">
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" id="password" required placeholder="请输入密码">
+      </div>
+      <button type="submit" class="login-btn">登录</button>
+      <div class="register-link">
+        还没有账号？<a href="register.html">立即注册</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无畏重启：逆光之战</title>
+    <style>
+        /* 自定义工具类样式 */
+        .text-shadow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+        }
+        .text-shadow-lg {
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+        .glow {
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.6);
+            transform: translateY(-3px);
+        }
+        .bg-gradient-game {
+            background: linear-gradient(135deg, #020617 0%, #1E293B 100%);
+        }
+        
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: white;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #1E293B 100%);
+        }
+        
+         .video-background {
+            position: absolute; /* 改为绝对定位 */
+            top: 0;
+            left: 0;
+            width: 100%; /* 使用百分比宽度 */
+            height: 100%; /* 使用百分比高度 */
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* 视频宽度始终充满容器 */
+            height: 100%; /* 视频高度始终充满容器 */
+            object-fit: cover; /* 保持比例并覆盖整个容器 */
+            filter: brightness(0.5);
+        }
+        
+        /* 背景遮罩 */
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 主容器 */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 42rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+        
+        /* 标题样式 */
+        .game-title {
+            text-align: center;
+        }
+        
+        .game-title h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+            letter-spacing: 0.25rem;
+        }
+        
+        .title-underline {
+            width: 8rem;
+            height: 0.25rem;
+            background: rgba(0, 240, 255, 0.8);
+            margin: 1rem auto 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        
+        /* 按钮容器 */
+        .button-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        /* 按钮样式 */
+        .menu-button {
+            width: 100%;
+            padding: 1.5rem 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 240, 255, 0.8);
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-button i {
+            color: rgba(0, 240, 255, 0.8);
+            font-size: 1.5rem;
+        }
+        
+        .menu-button:hover {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.6);
+            transform: translateY(-3px);
+            cursor: pointer;
+        }
+        
+        .scale-95 {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="../videos/瑞娜bgm完整.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+        </video>
+    </div>
+    
+    <!-- 背景遮罩 -->
+    <div class="bg-overlay"></div>
+    
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 游戏标题 -->
+        <div class="game-title">
+            <h1>无畏重启:逆光之战</h1>
+            <div class="title-underline"></div>
+        </div>
+        
+        <!-- 菜单按钮 -->
+        <div class="button-container">
+            <!-- 新的游戏按钮 -->
+            <button id="newGameBtn" class="menu-button glow-hover">
+                <i class="fa fa-gamepad"></i>
+                <span>新的游戏</span>
+                <i class="fa fa-arrow-right"></i>
+            </button>
+            
+            <!-- 读取存档按钮 -->
+            <button id="loadGameBtn" class="menu-button glow-hover">
+                <i class="fa fa-floppy-o"></i>
+                <span>读取存档</span>
+                <i class="fa fa-arrow-right"></i>
+            </button>
+            
+            <!-- 成就按钮 -->
+            <button id="achievementsBtn" class="menu-button glow-hover">
+                <i class="fa fa-trophy"></i>
+                <span>成就</span>
+                <i class="fa fa-arrow-right"></i>
+            </button>
+            
+            <!-- 关于我们按钮 -->
+            <button id="aboutBtn" class="menu-button glow-hover">
+                <i class="fa fa-info-circle"></i>
+                <span>关于我们</span>
+                <i class="fa fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('newGameBtn').addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    window.location.href = '0-0.html';
+                }, 200);
+            });
+            
+            document.getElementById('loadGameBtn').addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    window.location.href = 'save.html?action=load';
+                }, 200);
+            });
+            
+            document.getElementById('achievementsBtn').addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    window.location.href = '成就.html';
+                }, 200);
+            });
+            
+            document.getElementById('aboutBtn').addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    window.location.href = 'about.html';
+                }, 200);
+            });
+            
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseleave', function() {
+                    this.classList.remove('scale-95');
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    alert('返回上一级菜单');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

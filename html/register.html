@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户注册</title>
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+  <div class="video-bg">
+    <video src="..\videos\瑞娜bgm完整.mp4" loop muted autoplay playsinline></video>
+  </div>
+
+  <div class="register-container">
+    <h2>注册</h2>
+    <form class="register-form">
+      <div class="form-group">
+        <label for="username">用户名</label>
+        <input 
+          type="text" 
+          id="username" 
+          required 
+          placeholder="请输入3-12位字母/数字"
+          maxlength="12" >
+        
+      </div>
+
+      <div class="form-group">
+        <label for="password">设置密码</label>
+        <div class="password-wrapper">
+          <input 
+            type="password" 
+            id="password" 
+            required 
+            placeholder="请输入6-18位密码（含字母+数字）"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,18}$" >
+          
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">确认密码</label>
+        <div class="password-wrapper">
+          <input 
+            type="password" 
+            id="confirm-password" 
+            required 
+            placeholder="请再次输入密码"
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="register-btn">注册账号</button>
+
+      <div class="login-link">
+        已有账号？<a href="login.html">立即登录</a>  
+      </div>
+    </form>
+  </div>
+
+  <script src="../js/register.js"></script>
+</body>
+</html>

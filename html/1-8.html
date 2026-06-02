@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\1-8.css">
+    <title>游戏界面</title>
+    <style>
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; 
+      overflow: hidden;
+    }
+    
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; 
+    }
+    
+    /* 半透明遮罩层*/
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 页面内容样式 - 确保内容可见 */
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="..\videos\KO动态.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- 半透明遮罩层 -->
+    <div class="overlay"></div>
+    
+    <!-- 角色立绘容器 -->
+    <div class="character-container left">
+        <img class="character-image" id="left-character-image" src="" >
+    </div>
+    <div class="character-container right">
+        <img class="character-image" id="right-character-image" src="" >
+    </div>
+
+    <!-- 设置按钮 -->
+    <button class="settings-btn" id="settings-btn">
+        <span class="settings-icon">⚙️</span>
+    </button>
+    
+    <!-- 设置菜单 -->
+    <div class="settings-menu" id="settings-menu">
+        <ul>
+            <li><a href="0-0.html">新的游戏</a></li>
+            <li><a href="save.html?action=save">保存存档</a></li>
+            <li><a href="save.html?action=load">获取存档</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="login.html">退出登录</a></li>
+        </ul>
+    </div>
+
+    <!-- 对话区域 -->
+    <div class="dialogue-container">
+        <div class="name-bar" id="name-bar">
+            <span id="character-name">角色名</span>
+        </div>
+        <div class="dialogue-box" id="dialogue-box">
+            <p id="dialogue-text"></p>
+        </div>
+        <div class="continue-indicator">点击继续 ▼</div>
+    </div>
+
+    <script src="..\js\1-8.js"></script>
+</body>
+</html>

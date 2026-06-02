@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吕骐豪 - 个人网站</title>
+  <style>
+    /* 基础样式重置与全局配置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #1f2937;
+      opacity: 0;
+      animation: pageFadeIn 0.8s ease-in-out forwards;
+    }
+
+    /* 页面渐入动画 */
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 导航栏样式 */
+    .welcome-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+
+    .welcome-bar.scroll {
+      padding: 0.7rem 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .welcome-bar h1 {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    /* 容器样式 */
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 4rem;
+    }
+
+    /* 区块通用样式 */
+    section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f3f4f6;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* 个人信息区块 */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: imgFadeIn 0.6s ease-in-out forwards;
+    }
+
+    .profile-info {
+      text-align: center;
+      width: 100%;
+    }
+
+    .profile-info h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      color: #6b7280;
+    }
+
+    .profile-details p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* 关于我区块 */
+    .about h3,
+    .hobbies h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      color: #1f2937;
+    }
+
+    .about p {
+      color: #6b7280;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    /* 爱好区块 */
+    .hobbies-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .hobby-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .hobby-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .hobby-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      background-color: #f3f4f6;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
+    }
+
+    .hobby-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: imgFadeIn 0.6s ease-in-out forwards;
+      transition: transform 0.5s ease;
+    }
+
+    .hobby-item:hover .hobby-img img {
+      transform: scale(1.05);
+    }
+
+    .hobby-info h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+      text-align: center;
+    }
+
+    .hobby-info p {
+      color: #6b7280;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* 图片渐入动画 */
+    @keyframes imgFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* 响应式适配 */
+    @media (min-width: 768px) {
+      .welcome-bar h1 {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+      }
+
+      .container {
+        padding: 8rem 2rem 5rem;
+      }
+
+      .profile {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .profile-info {
+        text-align: left;
+      }
+
+      .profile-details p {
+        justify-content: flex-start;
+      }
+
+      .hobbies-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .hobby-img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <div class="welcome-bar">
+    <h1>你好，我是吕骐豪，欢迎来到我的个人网站！</h1>
+  </div>
+
+  <!-- 主内容区 -->
+  <div class="container">
+    <!-- 个人信息区块 -->
+    <section class="profile">
+      <div class="avatar">
+        <!-- 本地图片引用，保持原路径 -->
+        <img src="..\images\吕骐豪.jpg" alt="吕骐豪的个人照片">
+      </div>
+      <div class="profile-info">
+        <h2>吕骐豪</h2>
+        <div class="profile-details">
+          <p>
+            <!-- 用文本符号替代字体图标，本地实现 -->
+            🎓 专业：人工智能 — 工商管理
+          </p>
+          <p>
+            📋 活动分工：组长、主程序员、协助写手
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关于我区块 -->
+    <section class="about">
+      <h3>关于我</h3>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好！我是吕骐豪，目前就读于人工智能——工商管理专业。我喜欢在技术与管理的交叉领域探索，既享受写代码解决问题的逻辑快感，也热衷于通过团队协作完成项目。日常除了钻研专业内容，还爱用运动、朗诵充实生活，偶尔也会在游戏里找灵感～期待与各位的交流，让我们一起进步吧！
+      </p>
+    </section>
+
+    <!-- 我的爱好区块 -->
+    <section class="hobbies">
+      <h3>我的爱好</h3>
+      <div class="hobbies-list">
+        <!-- 运动 -->
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="..\images\运动.jpg" alt="吕骐豪运动相关照片">
+          </div>
+          <div class="hobby-info">
+            <h4>运动</h4>
+            <p>享受运动带来的活力，常参与球类、跑步等活动，保持积极状态。</p>
+          </div>
+        </div>
+
+        <!-- 朗诵 -->
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="..\images\朗诵.jpg" alt="吕骐豪朗诵相关照片">
+          </div>
+          <div class="hobby-info">
+            <h4>朗诵</h4>
+            <p>热爱用声音传递情感，曾参与主持、朗诵活动，享受表达的乐趣。</p>
+          </div>
+        </div>
+
+        <!-- 主持 -->
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="..\images\主持.jpg" alt="吕骐豪主持相关照片">
+          </div>
+          <div class="hobby-info">
+            <h4>主持</h4>
+            <p>闻声听雨，入耳润心，我享受主持带来的快乐，享受将信息带给他人的过程。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. 导航栏滚动效果
+      const welcomeBar = document.querySelector('.welcome-bar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 15) {
+          welcomeBar.classList.add('scroll');
+        } else {
+          welcomeBar.classList.remove('scroll');
+        }
+      });
+
+      // 2. 图片加载失败处理（本地默认图用纯色背景兜底，简化实现）
+      const allImages = document.querySelectorAll('img');
+      allImages.forEach(img => {
+        img.addEventListener('error', function() {
+          // 图片加载失败时，用背景色+文字提示替代
+          this.style.display = 'none';
+          const parent = this.parentElement;
+          parent.style.backgroundColor = '#e5e7eb';
+          parent.style.display = 'flex';
+          parent.style.alignItems = 'center';
+          parent.style.justifyContent = 'center';
+          parent.style.color = '#6b7280';
+          parent.style.fontSize = '0.8rem';
+          parent.textContent = '图片加载中...';
+        });
+      });
+
+      // 3. 点击空白处返回顶部
+      document.body.addEventListener('click', function(e) {
+        // 排除图片区域点击
+        if (!e.target.closest('img') && !e.target.closest('button') && !e.target.closest('a')) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

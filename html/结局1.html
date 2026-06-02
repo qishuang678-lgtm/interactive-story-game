@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\1-8.css">
+    <title>游戏界面</title>
+    <style>
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; 
+      overflow: hidden;
+    }
+    
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; 
+    }
+    
+    /* 半透明遮罩层*/
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 页面内容样式 - 确保内容可见 */
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="..\videos\爆炸.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- 修正后 -->
+<audio autoplay loop id="audio">
+  <source src="..\audios\Sacred PlaySecret Place.mp3" type="audio/mpeg">
+  您的浏览器不支持音频播放
+</audio>
+    
+    <!-- 半透明遮罩层 -->
+    <div class="overlay"></div>
+    
+    <!-- 角色立绘容器 -->
+    <div class="character-container left">
+        <img class="character-image" id="left-character-image" src="" >
+    </div>
+    <div class="character-container right">
+        <img class="character-image" id="right-character-image" src="" >
+    </div>
+
+    <!-- 设置按钮 -->
+    <button class="settings-btn" id="settings-btn">
+        <span class="settings-icon">⚙️</span>
+    </button>
+    
+    <!-- 设置菜单 -->
+    <div class="settings-menu" id="settings-menu">
+        <ul>
+            <li><a href="0-0.html">新的游戏</a></li>
+            <li><a href="save.html?action=save">保存存档</a></li>
+            <li><a href="save.html?action=load">获取存档</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="login.html">退出登录</a></li>
+        </ul>
+    </div>
+
+    <!-- 对话区域 -->
+    <div class="dialogue-container">
+        <div class="name-bar" id="name-bar">
+            <span id="character-name">角色名</span>
+        </div>
+        <div class="dialogue-box" id="dialogue-box">
+            <p id="dialogue-text"></p>
+        </div>
+        <div class="continue-indicator">点击继续 ▼</div>
+    </div>
+    <!-- 在对话区域下方添加 -->
+<div class="ending-container">
+    <h1 class="ending-title">结局一</h1>
+    <p class="ending-subtitle">正义的代价</p>
+    <div class="ending-options">
+        <button class="ending-btn" data-target="menu.html">返回首页</button>
+        <button class="ending-btn" data-target="../2Dgame/html/决战1.html">继续冒险</button>
+        <button class="ending-btn" data-target="2-5.html">时间倒流</button>
+    </div>
+</div>
+    <script src="..\js\结局1.js"></script>
+    <script>
+// 等待页面完全加载（确保audio元素已存在）
+window.addEventListener('load', function() {
+  // 获取音频元素（与你页面中audio的id保持一致）
+  const audio = document.getElementById('audio');
+  
+  // 检查音频元素是否存在
+  if (!audio) {
+    console.error('未找到音频元素，请检查ID是否正确');
+    return;
+  }
+
+  // 定义首次点击播放函数
+  function playAudioOnClick() {
+    audio.play().then(() => {
+      console.log('音频开始播放');
+      // 播放成功后移除事件，只触发一次
+      document.removeEventListener('click', playAudioOnClick);
+    }).catch(err => {
+      console.log('播放失败:', err);
+    });
+  }
+
+  // 绑定点击事件
+  document.addEventListener('click', playAudioOnClick);
+});
+</script>
+</body>
+</html>
